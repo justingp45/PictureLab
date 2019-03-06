@@ -28,6 +28,34 @@ public class IntArrayWorker
     return total;
   }
   
+  public int getCount(int n){
+      int count = 0;
+      for (int[] row : matrix){
+          for (int pixel : row){
+              if (pixel==n)
+                count ++;
+        }
+    }
+    return count;
+  } //NED getCount(int n)
+  
+  public int getLargest(){
+      int largest = 0;
+      for (int[] row : matrix){
+          for (int pixel : row){
+              if (pixel>largest)
+                largest = pixel;
+            }
+        }
+      return largest;
+  }
+  
+  public int getColTotal(){
+      int Coltotal = 0;
+      
+      return Coltotal;
+    } 
+  
   /**
    * Method to return the total using a nested for-each loop
    * @return the total of the values in the array
