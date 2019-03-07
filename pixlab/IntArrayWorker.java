@@ -33,7 +33,7 @@ public class IntArrayWorker
       for (int[] row : matrix){
           for (int pixel : row){
               if (pixel==n)
-                count ++;
+                count++;
         }
     }
     return count;
@@ -50,10 +50,13 @@ public class IntArrayWorker
       return largest;
   }
   
-  public int getColTotal(){
-      int Coltotal = 0;
-      
-      return Coltotal;
+  public int getColTotal(int col){
+    int total = 0;
+    for (int row = 0; row < matrix.length; row++)
+    {
+        total += matrix[row][col];
+    }
+    return total;
     } 
   
   /**
