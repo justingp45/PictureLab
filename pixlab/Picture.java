@@ -334,21 +334,23 @@ public class Picture extends SimplePicture
       }
     }   
   }
-
-    public void copy(Picture fromPic, 
-                 int startRow, int startCol, int fSC)
+  
+     public void copy(Picture fromPic, 
+                 int startRow, int startCol,
+                 int fSR,      int fSC,
+                 int fER,      int fEC)
   {
     Pixel fromPixel = null;
     Pixel toPixel = null;
     Pixel[][] toPixels = this.getPixels2D();
     Pixel[][] fromPixels = fromPic.getPixels2D();
-    for (int fromRow = 0, toRow = startRow; 
-         fromRow < fromPixels.length &&
+    for (int fromRow = fSR, toRow = startRow; 
+         fromRow < fER &&
          toRow < toPixels.length; 
          fromRow++, toRow++)
     {
-      for (int fromCol = 0, toCol = startCol; 
-           fromCol < fromPixels[0].length &&
+      for (int fromCol = fSC, toCol = startCol; 
+           fromCol < fEC &&
            toCol < toPixels[0].length;  
            fromCol++, toCol++)
       {
@@ -376,6 +378,24 @@ public class Picture extends SimplePicture
     this.write("collage.jpg");
   }
   
+  public void myCollage(){
+      Picture pic1 = new Picture("snowman.jpg");
+      Picture pic2 = new Picture("barbaraS.jpg");
+      Picture pic3 = new Picture("jenny-red.jpg");
+      this.copy(pic1, 0, 0);
+      this.copy(pic2, 0, 200);
+      this.copy(pic3, 0, 250);
+      Picture pic1Negate = new Picture("snowman.jpg");
+      pic1Negate.negate();
+      Picture pic2Grayscale = new Picture("barbaraS.jpg");
+      pic2Grayscale.grayscale();
+      Picture pic3MirrorDiagonal = new Picture("jenny-red.jpg");
+      pic3MirrorDiagonal.mirrorDiagonal();
+      this.copy(pic1Negate, 200, 0);
+      this.copy(pic2Grayscale, 200, 200);
+      this.copy(pic3MirrorDiagonal, 200, 250);
+      this.write("mycollage.jpg");
+    }
   
   /** Method to show large changes in color 
     * @param edgeDist the distance for finding edges

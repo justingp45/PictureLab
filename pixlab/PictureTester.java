@@ -106,12 +106,25 @@ public class PictureTester
   }
   
   /** Method to test the collage method */
+  public static void testCopy(){
+      Picture ocean = new Picture("beach.JPG");
+      Picture daddy = new Picture("snowman.JPG");
+      ocean.copy(daddy, 10, 10, 60, 160, 180, 230);
+      ocean.explore();
+    }
+  
   public static void testCollage()
   {
     Picture canvas = new Picture("640x480.jpg");
     canvas.createCollage();
     canvas.explore();
   }
+  
+  public static void testMyCollage(){
+    Picture canvas = new Picture("640x480.jpg");
+    canvas.myCollage();
+    canvas.explore();
+    }
   
   /** Method to test edgeDetection */
   public static void testEdgeDetection()
@@ -147,6 +160,7 @@ public class PictureTester
     //testMirrorGull();
     //testMirrorDiagonal();
     testCollage();
+    testMyCollage();
     //testCopy();
     //testEdgeDetection();
     //testEdgeDetection2();
